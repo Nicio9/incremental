@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>Infinite antimatter generator</title>
+  <script>
+    var tickspeed=5;
+    var antimatter=5;
+    ticker = setInterval(myFunction, tickspeed)
+    function myFunction() {
+      antimatter*=2;
+      document.getElementById("A").innerHTML = antimatter;
+      if(antimatter>=Infinity){
+        document.getElementById('inf').style.display='block'; // show the button
+        clearInterval(ticker)
+      }
+    }
+
+    
+    var ip=0;
+    function infin(){
+        if(antimatter>=Infinity){
+            antimatter=1
+            ip+=1
+            document.getElementById("IP").innerHTML = "you have "+ip+" infinity points";
+            document.getElementById('inf').style.display='none'; // hide the button
+            ticker = setInterval(myFunction, tickspeed);
+        }
+    }
+    function start(){
+        document.getElementById('inf').style.display='none'; // hide the button (no)
+        myFunction();
+        
+    }
+  </script>
+  <style>
+      body{
+          background-color: darkblue;
+      }
+      button{
+        background-color: #000000;
+        color: #FFFFFF;
+        float: left;
+        padding: 10px;
+        border-radius: 10px;
+        -moz-border-radius: 10px;
+        -webkit-border-radius: 10px;
+        }
+  </style>
+</head>
+<body onload="start()">
+  <h1>You have <span id="A"></span> antimatter</h1>
+  <h1><span id="IP"></span></h1>
+  <input type="button" id="inf" style="display:none" onclick="infin()" value="infinity">
+</body>
+</html>
